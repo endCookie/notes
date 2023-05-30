@@ -40,10 +40,13 @@ def create_tag(**kwargs):
 @app.route("/users/<int:tag_id>", methods=["PUT"])
 @doc(summary='Edit tag', tags=['Tags'])
 def edit_tag(tag_id):
+    # FIXME: вроде, вы написали в письме "Реализовал нереализованное".
+    #  Эта функция, видимо, тоже реализована?
     raise NotImplemented("Метод не реализован")
 
 
 @app.route("/users/<int:tag_id>", methods=["DELETE"])
 @doc(summary='Delete tag', tags=['Tags'])
 def delete_tag(tag_id):
+    # FIXME: и эта?
     raise NotImplemented("Метод не реализован")

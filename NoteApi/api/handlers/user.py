@@ -29,6 +29,7 @@ def get_users():
 @use_kwargs(UserRequestSchema, location='json')
 def create_user(**kwargs):
     user = UserModel(**kwargs)
+    # FIXME: и это тоже реализовали?
     # TODO: добавить обработчик на создание пользователя с неуникальным username.
     #  При попытке создать пользователя с существующим именем, возвращаем ответ с кодом 400
     user.save()
@@ -51,6 +52,7 @@ def delete_user(user_id):
     """
     Пользователь может удалять ТОЛЬКО свои заметки
     """
+    # FIXME: и тут добавили проверку на принадлежность заметки авторизованному пользователю, видимо...
     user = get_object_or_404(UserModel, user_id)
     user.delete()
     return "", 204

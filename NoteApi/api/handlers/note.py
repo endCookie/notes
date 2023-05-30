@@ -47,6 +47,7 @@ def get_notes(**kwargs):
     return notes, 200
 
 
+# FIXME: наверное, эти блоки комментариев стоит убрать их проекта? Для чего они тут?
 # @app.route("/notes/public", methods=["GET"])
 # @doc(summary='Get all public notes', tags=['Notes'])
 # @marshal_with(NoteSchema(many=True), code=200)
@@ -106,6 +107,8 @@ def edit_note(note_id):
     note.private = note_data.get("private") or note.private
     note.save()
     return note_schema.dump(note), 200
+    # FIXME: до этого условия программа не дойдет никогда.
+    #  Это говорит о том, что решения не тестировались
     if author != multi_auth.current_user():
         return "", 403
 
@@ -120,6 +123,7 @@ def delete_note(note_id):
     note = get_object_or_404(NoteModel, note_id)
     note.delete()
     return "", 204
+    # FIXME: тут та же проблема, что и в предыдущей функции
     if author != multi_auth.current_user():
         return "", 403
 
